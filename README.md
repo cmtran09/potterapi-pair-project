@@ -1,1 +1,1 @@
-# potterapi-pair-project
+# project-2-potterapi-pair
