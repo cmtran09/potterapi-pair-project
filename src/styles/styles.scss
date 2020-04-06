@@ -18,6 +18,7 @@ $body-background-color: black;
 .hero.sortinghat.is-fullheight {
     background-image: url('../images/hogwarts.jpg');
     background-size: cover;
+    position: relative;
 }
 // .hero.sortinghat.is-fullheight {
 //   background-image: url('../images/hogw.png');
@@ -25,6 +26,10 @@ $body-background-color: black;
 // }
 
 html {
+}
+
+button {
+  padding: 12px 24px;
 }
   
 html, .section {
@@ -86,7 +91,7 @@ html, .section {
 }
 
 .griffindor-banner {
-  background-image: url('../images/Griff.png');
+  background-image: url('../images/Grif.png');
 }
 .slytherin-banner {
   background-image: url('../images/Slyt.png');
@@ -96,6 +101,137 @@ html, .section {
 }
 .ravenclaw-banner {
   background-image: url('../images/Rave.png');
+}
+
+.left{
+  position: absolute;
+  left: 0px;
+  z-index: 300;
+  height: 100%;
+}
+
+.img {
+  width: 128px;
+}
+
+.right{
+  position: absolute;
+  right: 0;
+  z-index: 300;
+  height: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.bar{
+  // border: 1px solid red;
+  width: 40px;
+  height: 100%;
+  display: flex;
+  // flex-direction: row-reverse;
+  // flex-direction: row;
+}
+
+.barRight {
+  flex-direction: row-reverse;
+}
+
+.innerBar {
+  opacity: 0;
+  transition: all 1s;
+}
+
+.innerBarRave{
+  background-color: #2B3D6D;
+  width: 20px;
+  height: 100%;
+  opacity: 1;
+  // transition: all 1s;
+}
+
+.innerBarRave2 {
+  background-color: #BFBEC4;
+  width: 20px;
+  height: 100%;
+  opacity: 1;
+  // transition: all 1s;
+}
+
+.innerBarSlyt {
+  background-color: #0E6634;
+  width: 20px;
+  height: 100%;
+  opacity: 1;
+  // transition: all 1s;
+}
+
+.innerBarSlyt2 {
+  background-color: #BFBEC4;
+  width: 20px;
+  height: 100%;
+  opacity: 1;
+  // transition: all 1s;
+}
+
+.innerBarHuff {
+  background-color: #F6CA33;
+  width: 20px;
+  height: 100%;
+  opacity: 1;
+  // transition: all 1s;
+}
+
+.innerBarHuff2 {
+  background-color:black;
+  width: 20px;
+  height: 100%;
+  opacity: 1;
+  // transition: all 1s;
+}
+
+.innerBarGryf {
+  background-color: #A21D20;
+  width: 20px;
+  height: 100%;
+  opacity: 1;
+  // transition: all 1s;
+}
+
+.innerBarGryf2 {
+  background-color: #F6CA33;
+  width: 20px;
+  height: 100%;
+  opacity: 1;
+  // transition: all 1s;
+}
+
+.hello {
+  color: red;
+}
+
+.hidden {
+  display: none;
+  transition: all 1s;
+}
+
+.showQuiz {
+  display: inline;
+}
+
+@keyframes fadeIn {
+  from {
+     opacity: 0;
+  }
+  to {
+     opacity: 1;
+  }
+}
+
+.fade-in {
+ opacity: 0;
+ animation: fadeIn ease-in 1;
+ animation-fill-mode: forwards;
+ animation-duration: 1s;
 }
 
 @import '~bulma'

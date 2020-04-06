@@ -1,93 +1,84 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
-class CharacterCard extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            character: {}
-        }
-    }
+const CharacterCard = (props) => {
 
-    componentDidMount() {
-        const id = this.props.match.params.id
+    const [character, setCharacter] = useState({})
+
+    useEffect(() => {
+        const id = props.match.params.id
         axios.get(`https://www.potterapi.com/v1/characters/${id}?key=%242a%2410%24.oxIEWrEQmPZNXSvbcFrMO3dLi38tMO7PKl0ufjK%2FESpJ4Y4tyWJW`)
-        // axios.get(`https://www.potterapi.com/v1/characters/5a0fa54aae5bc100213c232f?key=%242a%2410%24.oxIEWrEQmPZNXSvbcFrMO3dLi38tMO7PKl0ufjK%2FESpJ4Y4tyWJW`)
-
-            .then(res => this.setState({ character: res.data }))
+            .then(res => setCharacter(res.data))
             .catch(err => console.log(err))
-    }
+    }, [])
 
-    CapitlizeString() {
+    function CapitlizeString(word) {
         return word.charAt(0).toUpperCase() + word.slice(1);
     }
 
-render() {
-    console.log("char", this.state.character)
+    console.log("char", character)
+    console.log(props)
     return (
-        <section className="hero is-fullheight">
-            <div className="tile is-ancestor">
-                <div className="tile is-vertical is-4">
-                    <div className="tile">
-                        <div className="tile is-parent is-vertical">
-                            <article className="tile is-child notification is-primary">
-                                <p className="title">Role: {this.state.character.role}</p>
-                            </article>
-                            <article className="tile is-child notification is-warning">
-                                {/* capitalise the first letter */}
-                                <p className="title ">Species: {(this.state.character.species)}</p>
-                                <p className="title">Blood Status: {this.state.character.bloodStatus}</p>
-                                <p className="subtitle">Bottom tile</p>
-                            </article>
-                        </div>
-                        {/* <div className="tile is-parent">
-                                <article className="tile is-child notification is-info">
-                                    <p className="title">Middle tile</p>
-                                    <p className="subtitle">With an image</p>
-                                    <figure className="image is-4by3">
-                                        <img src="https://bulma.io/images/placeholders/640x480.png" />
-                                    </figure>
-                                </article>
-                            </div> */}
-                    </div>
-                    <div className="tile is-parent">
-                        <article className="tile is-child notification is-danger">
-                            {/* <p className="title">Wide tile</p> */}
-                            <p className="subtitle">School: {this.state.character.school}</p>
-                            <p className="subtitle">Member of Minstry of Magic: {this.state.character.ministryOfMagic ? "Yes" : "No"}</p>
-                            <p className="subtitle">In the Order of the Pheonix: {this.state.character.orderOfThePhoenix ? "Yes" : "No"}</p>
-                            <p className="subtitle">In Dumbledores Army: {this.state.character.dumbledoresArmy ? "Yes" : "No"}</p>
-                            <p className="subtitle">Death Eater: {this.state.character.deathEater ? "Yes" : "No"}</p>
-                            <div className="content">
-                                {/* <!-- Content --> */}
-                            </div>
-                        </article>
-                    </div>
-                </div>
-                <div className="tile is-parent">
-                    <article className="tile is-child notification is-success">
-                        <div className="content">
-                            <p className="title">Name: {this.state.character.name}</p>
-                            {/* if statement to return no known aliass */}
-                            <p className="title">Alias: {this.state.alias}</p>
-                            <p className="subtitle">With even more content</p>
-                            <div className="content">
+        <section className="section">
+            <h1 className="title has-text-white has-text-centered">Your Character Card</h1>
+            <div className="task-container columns is-multiline">
+                <div className="card column is-half is-offset-one-quarter">
+                    <div className="card-content">
+                        <div className="tile is-ancestor">
+                            <div className="tile is-vertical is-4">
+                                <div className="tile">
+                                    <div className="tile is-parent is-vertical">
+                                        <article className="tile is-child notification is-light">
+                                            <p className=""><strong>Role: </strong>{character.role ? CapitlizeString(character.role) : ""}</p>
+                                        </article>
+                                        <article className="tile is-child notification is-light">
+                                            {/* capitalise the first letter */}
+                                            <p className=" "><strong>Species: </strong>{character.species ? CapitlizeString(character.species) : ""}</p>
+                                            <p className=""><strong>Blood Status: </strong>{character.bloodStatus ? CapitlizeString(character.bloodStatus) : ""}</p>
+                                        </article>
+                                    </div>
+                                </div>
                                 <div className="tile is-parent">
-                                    <article className="tile is-child notification is-info">
-                                        <figure className="image is-4by3">
-                                            <img src="https://bulma.io/images/placeholders/640x480.png" />
-                                        </figure>
+                                    <article className="tile is-child notification is-light">
+                                        <p className=""><strong>School: </strong>{character.school}</p>
+                                        <p className=""><strong>Member of Minstry of Magic: </strong>{character.ministryOfMagic ? "Yes" : "No"}</p>
+                                        <p className=""><strong>In the Order of the Pheonix: </strong>{character.orderOfThePhoenix ? "Yes" : "No"}</p>
+                                        <p className=""><strong>In Dumbledores Army: </strong>{character.dumbledoresArmy ? "Yes" : "No"}</p>
+                                        <p className=""><strong>Death Eater: </strong>{character.deathEater ? "Yes" : "No"}</p>
                                     </article>
                                 </div>
-                                {/* <!-- Content --> */}
+                            </div>
+                            <div className="tile is-parent">
+                                <article className="tile is-child notification is-light">
+                                    <div className="content">
+                                        <p className="">Name: <strong className="title">{character.name}</strong></p>
+                                        {/* if statement to return no known aliass */}
+                                        <p className="">Alias: {character.alias ? character.alias : "No known aliases"}</p>
+                                        <div className="content">
+                                            <div className="tile is-parent">
+                                                <article className="tile is-child notification is-light">
+                                                    <figure className="image is-4by3">
+                                                        <img src="https://bulma.io/images/placeholders/640x480.png" />
+                                                    </figure>
+                                                </article>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
                             </div>
                         </div>
-                    </article>
+                    </div>
                 </div>
             </div>
+            <Link to='/spells'>
+                <p className=" has-text-white has-text-centered">
+                    Back
+            </p>
+            </Link>
         </section>
+
     )
-}
 }
 
 export default CharacterCard

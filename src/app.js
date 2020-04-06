@@ -29,6 +29,7 @@ const App = () => (
             <Route exact path="/spells/:id" component={SpellCard} />
             <Route exact path="/characters/:id" component={CharacterCard} />
             <Route exact path="/characters" component={Characters} />
+            <Route exact path="/quiz" component={Quiz} />
         </Switch>
         {/* <CharacterCard /> */}
         {/* <Characters /> */}
@@ -45,38 +46,8 @@ const App = () => (
         {/* // </Switch> */}
         {/* <Welcome /> */}
     </BrowserRouter>
-    // has-text-white
 )
 
-// var sideNav = document.getElementById('mySidenav')
-// var button = document.getElementById('button')
-// var close = document.getElementById('closebtn')
-
-// class NavBar extends React.Component {
-//     openNav() {
-//         sideNav.style.width = '250px'
-//         console.log('clicked')
-//     }
-//     closeNav() {
-//         sideNav.style.width = '0'
-//     }
-//     render(){
-//         return (
-//             <div>
-//                 <div id="mySidenav" className="sidenav">
-//                     <a href="javascript:void(0)" id="closebtn">&times;</a>
-//                     <a href="#">About</a>
-//                     <a href="#">Characterss</a>
-//                     <a href="#">Spells</a>
-//                 </div>
-//                 <button id="button" style="font-size:30px;cursor:pointer"
-//                     onMouseOver={(e) => this.openNav(e)}
-//                     onMouseOut={(e) => this.closeNav(e)}
-//                 >open</button>
-//             </div>
-//         )
-//     }
-// }
 
 
 console.log(process.env.DB_HOST)

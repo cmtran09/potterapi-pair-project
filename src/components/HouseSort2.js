@@ -1,134 +1,109 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 
-class HouseSort2 extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            Gryffindor: [[]],
-            GryffindorChoices: [],
-            Ravenclaw: [[]],
-            RavenclawChoices: [],
-            Slytherin: [[]],
-            SlytherinChoices: [],
-            Hufflepuff: [[]],
-            HufflepuffChoices: [],
-        }
+
+const HouseSort = (props) => {
+
+    const [house, setHouse] = useState(undefined)
+    const [clicks, setClicks] = useState(0)
+
+    function getHouse() {
+        axios.get('https://www.potterapi.com/v1/sortingHat')
+            .then(res => setHouse(res.data))
+        console.log(house)
     }
 
-    // Ravenclaw: [res.data[1].values],
-    // Slytherin: [res.data[2].values],
-    // Hufflepuff: [res.data[3].values],
-
-    componentDidMount() {
-        axios.get('https://www.potterapi.com/v1/houses?key=%242a%2410%24.oxIEWrEQmPZNXSvbcFrMO3dLi38tMO7PKl0ufjK%2FESpJ4Y4tyWJW')
-            .then(res => this.setState({ 
-                Gryffindor: [res.data[0].values], 
-                Ravenclaw: [res.data[1].values], 
-                Slytherin: [res.data[2].values], 
-                Hufflepuff: [res.data[3].values], 
+    function getBanner() {
+        if (typeof house != 'undefined') {
+            if (house === "Gryffindor") {
+                return (<img src="../images/Grif.png" alt="" />)
             }
-            , () => {
-                this.getGriffWords()
+            if (house === "Slytherin") {
+                return (<img src="../images/Slyt.png" alt="" />)
             }
-            // , () => {this.getHuffWords()}
-            // , () => {this.getRaveWords()}
-            // , () => {this.getSlyWords()}
-            ))
-            // .then(res => this.setState({ Ravenclaw: [res.data[1].values]}))
-
-            .catch('potterApi get', err => console.log(err))
-    }
-
-    getNewWords() {
-        if (this.state.Gryffindor && this.state.Ravenclaw) {
-            // console.log("griff 5555", this.state.Gryffindor[0][0])
-            axios.get(`https://words.bighugelabs.com/api/2/50d1e258b2b8a1d1d86dea565cd54613/${this.state.Gryffindor[0][Math.floor(Math.random()*this.state.Gryffindor[0].length)]}/json`)
-                .then(res => this.setState({
-                    GryffindorChoices: res.data.noun.syn
-                }))
-                .catch('thesaurusApi get', err => console.log(err))
+            if (house === "Hufflepuff") {
+                return (<img src="../images/Huff.png" alt="" />)
+            }
+            if (house === "Ravenclaw") {
+                return (<img src="../images/Rave.png" alt="" />)
+            }
+            return ("")
         }
     }
 
-    getGriffWords() {
-        if (this.state.Gryffindor) {
-            // console.log("griff 5555", this.state.Gryffindor[0][0])
-            axios.get(`https://words.bighugelabs.com/api/2/50d1e258b2b8a1d1d86dea565cd54613/${this.state.Gryffindor[0][Math.floor(Math.random()*this.state.Gryffindor[0].length)]}/json`)
-                .then(res => this.setState({
-                    GryffindorChoices: res.data.noun.syn
-                }))
-                .catch('thesaurusApi get', err => console.log(err))
+    function getHouseBorder() {
+        if (typeof house != 'undefined') {
+            if (house === "Gryffindor") {
+                return 'Gryf'
+            }
+            if (house === "Slytherin") {
+                return 'Slyt'
+            }
+            if (house === "Hufflepuff") {
+                return 'Huff'
+            }
+            if (house === "Ravenclaw") {
+                return 'Rave'
+            }
+            return ''
         }
     }
-    getRaveWords() {
-        if (this.state.Ravenclaw) {
-            // console.log("griff 5555", this.state.Gryffindor[0][0])
-            axios.get(`https://words.bighugelabs.com/api/2/50d1e258b2b8a1d1d86dea565cd54613/${this.state.Ravenclaw[1][Math.floor(Math.random()*this.state.Ravenclaw[0].length)]}/json`)
-                .then(res => this.setState({
-                    RavenclawChoices: res.data.noun.syn
-                }))
-                .catch('thesaurusApi get', err => console.log(err))
-        }
-    }
-    getHuffWords() {
-        if (this.state.Hufflepuff) {
-            // console.log("griff 5555", this.state.Gryffindor[0][0])
-            axios.get(`https://words.bighugelabs.com/api/2/50d1e258b2b8a1d1d86dea565cd54613/${this.state.Hufflepuff[3][Math.floor(Math.random()*this.state.Hufflepuff[0].length)]}/json`)
-                .then(res => this.setState({
-                    HufflepuffChoices: res.data.noun.syn
-                }))
-                .catch('thesaurusApi get', err => console.log(err))
-        }
-    }
-    getSlyWords() {
-        if (this.state.Slytherin) {
-            // console.log("griff 5555", this.state.Gryffindor[0][0])
-            axios.get(`https://words.bighugelabs.com/api/2/50d1e258b2b8a1d1d86dea565cd54613/${this.state.Slytherin[2][Math.floor(Math.random()*this.state.Slytherin[0].length)]}/json`)
-                .then(res => this.setState({
-                    SlytherinChoices: res.data.noun.syn
-                }))
-                .catch('thesaurusApi get', err => console.log(err))
-        }
-    }
-    
-    render() {
-        console.log("griff 0", this.state.Gryffindor[0])
-        console.log("rav 0", this.state.Ravenclaw[0])
-        console.log("sly 0", this.state.Hufflepuff[0])
-        console.log("huff 0", this.state.Slytherin[0])
-        console.log("griff 0", this.state.Gryffindor[0])
-        console.log("griff 5", this.state.Gryffindor[0][0])
 
-        console.log("theasurest get griff", this.state.GryffindorChoices)
-        console.log("theasurest get rav", this.state.RavenclawChoices)
-        console.log("theasurest get sly", this.state.SlytherinChoices)
-        console.log("theasurest get huff", this.state.HufflepuffChoices)
-
-        console.log("rav", this.state.Ravenclaw)
-
-        // console.log("test 5",this.state.testword[0])
-        // console.log("griff 0",this.state.Gryffindor[0])
-        // console.log("rav",this.state.Ravenclaw)
-        // console.log("slyth",this.state.Slytherin)
-        // console.log("huff",this.state.Hufflepuff)
-
-        // console.log(process.env.API_Key)
-        // console.log(config)
-        return (
-            <section className="hero is-fullheight">
-                <div className="hero-body">
-                    <div className="container">
-                        <div className="image is-2by1">
-                            <p className="title has-text-centered title is-2  has-text-weight-bold">sorting Quiz page</p>
-                            <p className="subtitle has-text-centered ">heads</p>
-                        </div>
-                    </div>
+    return (
+        <section className="hero sortinghat is-fullheight" >
+            <div className="left">
+                <div className="bar">
+                    <div className={`innerBar innerBar${getHouseBorder()}`}></div>
+                    <div className={`innerBar innerBar${getHouseBorder()}2`}></div>
+                    {/* <div className=""></div> */}
                 </div>
-            </section>
-        )
-    }
+            </div>
+            <div className="right">
+                <div className="bar barRight">
+                    <div className={`innerBar innerBar${getHouseBorder()}`}></div>
+                    <div className={`innerBar innerBar${getHouseBorder()}2`}></div>
+                </div>
+            </div>
+            <div className="">
+                {getBanner()}
+            </div>
+            <div className="hero-body">
+                <div className="container">
+                    <p className="homeText title has-text-white has-text-centered title is-2  has-text-weight-bold">Home</p>
+                    <div className="has-text-centered">
+                        <Link to="/house" >
+                            {clicks < 5 ?
+                                <button className="button button is-black center" onClick={() => {
+                                    console.log('hi')
+                                    console.log(clicks)
+                                    setClicks(clicks + 1)
+                                    getHouse()
+                                }}>
+                                    Sorting Hat
+                            </button> :
+                                <button button className="button button is-black center" onClick={() => {
+                                    console.log('hi')
+                                }}>TOOOOOOO MANY CLICKS</button>}
+                        </Link>
+                    </div>
+                    <div className="has-text-centered">
+                        <Link to="/Characters">
+                            <button className="button is-black center ">Characters</button>
+                        </Link>
+                        <Link to="/spells">
+                            <button className="button is-black center ">Spells</button>
+                        </Link>
+                    </div>
+                    <div className="hello">hello</div>
+                </div>
+            </div>
+        </section >
+    )
 }
 
-export default HouseSort2
+export default HouseSort
+
+
+
