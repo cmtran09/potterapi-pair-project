@@ -5,6 +5,7 @@ import Question1 from "./Question1"
 // import Question2 from "./Question2"
 import Question3 from "./Question3"
 import Question4 from "./Question4"
+import Question5 from "./Question5"
 
 const Questions = (props) => {
 
@@ -18,6 +19,7 @@ const Questions = (props) => {
     console.log("props.randomMemberID", props.randomMemberID)
     return (
         <div className="">
+            <button onClick={e => console.log("hello from question component", props.randomMemberID)}>click</button>
             <p>Question component: helloe world</p>
             {props.randomMemberID.map((member, elem) => {
                 return (
@@ -33,15 +35,12 @@ const Questions = (props) => {
             })}
             {/* <p>{props.randomMemberID}</p> */}
             {/* {randomMemberID ? <p>{randomMemberID}</p> : ''} */}
-            <Question1 randomMember1={props.randomMemberID[0]} />
+            {props.randomMemberID ? <Question1 randomMember1={props.randomMemberID[0]} /> : ""}
+            {/* <Question1 randomMember1={props.randomMemberID[0]} /> */}
             {/* <Question2 /> */}
             <Question3 houseMascot={props.houseMascot} />
             <Question4 headOfHouse={props.headOfHouse} />
-            {/* <Question5 /> */}
-            < div className="">
-                <button className="button">Yes</button>
-                <button className="button">No</button>
-            </div>
+            <Question5 houseValues={props.houseValues} />
         </div>
     )
 }

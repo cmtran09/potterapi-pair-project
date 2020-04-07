@@ -42,6 +42,7 @@ const Question3 = (props) => {
 
     return (
         <div className="">
+            <div className=""></div>
             <p>What is your house's animal?</p>
             <input className={"input " + inputClass()} type="text" placeholder="Your Answer" onChange={answer.bind(this)} onKeyPress={e => e.key === "Enter" && guesses < 3 ? check(e) : ""} />
             {guesses < 3 && !isCorrect ? <button className="button is-black" onClick={(e) => { (check(e)) }}>Submit</button> : ""}

@@ -13,18 +13,10 @@ const Question4 = (props) => {
     function check(e) {
         e.preventDefault()
         if (userAnswer.toLowerCase() === correctAnswer4.toLowerCase()) {
-            console.log("answer is correct!")
-            console.log("isCorrect variable is = ", isCorrect)
-            console.log("isCorrect variable changed to true")
             setIsCorrect(true)
-            console.log("isCorrect variable is NOW = ", isCorrect)
         } else {
-            console.log("false")
-            console.log("haha")
-            console.log(guesses)
             setGuesses(guesses + 1)
             setIsCorrect(false)
-            console.log(guesses)
             hasFailed()
         }
     }
@@ -49,9 +41,6 @@ const Question4 = (props) => {
         }
     }
 
-    console.log("headOfHouse is ::::::", correctAnswer4)
-    console.log("isCorrect variable is NOW = ", isCorrect)
-    console.log(guesses)
     return (
         <div className="">
             <p>Who is the head of your house?</p>
@@ -59,9 +48,9 @@ const Question4 = (props) => {
             {guesses < 3 && !isCorrect ? <button className="button is-black" onClick={(e) => { (check(e)) }}>Submit</button> : ""}
             {(!isCorrect && guesses === 0) ? "" : (isCorrect) ? <small className="is-success">Correct!</small> : <small className="is-danger">Incorrect, you have {3 - guesses} guesses left</small>}
             {/* {isCorrect ? <small className="is-success">Correct!</small> : <small className="is-danger">Incorrect, you have {3 - guesses} guesses left</small>} */}
-            {failed ? <Link to='/spells'>
+            {failed ? <Link to='/characters'>
                 <p className="">
-                    Go Back And Study
+                    Go Back And Research
             </p>
             </Link> : ""}
         </div >
