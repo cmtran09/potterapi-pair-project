@@ -36,6 +36,7 @@ const Spells = (props) => {
                         <form className="form">
                             <div className="columns">
                                 <div className="column">
+                                    <label className="label has-text-white">Spell Search</label>
                                     <input
                                         className="input"
                                         type="text"
@@ -46,8 +47,9 @@ const Spells = (props) => {
                                     />
                                 </div>
                                 <div className="field column">
+                                    <label className="label has-text-white">Type of Spell</label>
                                     <select className="select" onChange={(e) => typeFilter(e)}>
-                                        <option value="All">All Types of Spells</option>
+                                        <option value="All">All</option>
                                         <option value="Spell">Spells</option>
                                         <option value="Hex">Hex</option>
                                         <option value="Charm">Charms</option>

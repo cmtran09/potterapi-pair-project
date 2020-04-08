@@ -13,7 +13,7 @@ const Quiz = (props) => {
     const [headOfHouse, setHeadOfHouse] = useState()
     const [houseValues, setHouseValues] = useState([])
     const [score, setScore] = useState(0)
-    const [questionNumber, setQuestionNumber] = useState(1)
+    const [questionNumber, setQuestionNumber] = useState(0)
     let houseIndex
 
     function getHouseId() {
@@ -46,44 +46,6 @@ const Quiz = (props) => {
             .catch(err => console.log(err))
     }, [])
 
-    // const [houseCharacterData, sethouseCharacterData] = useState([])
-
-
-
-    console.log('asdasda11111111111111111111', typeof (houseIndex))
-    console.log('asdasda11111111111111111111 houseMembers HOOOOOK', houseMembers)
-
-    console.log("member data house questions", houseMascot)
-    console.log("member data house questions", headOfHouse)
-    console.log("member data house questions", houseValues)
-
-    console.log('asdasda type of ', typeof (houseIndex))
-    console.log('asdasda', houseIndex)
-
-    // let apiKey = '$2a$10$.oxIEWrEQmPZNXSvbcFrMO3dLi38tMO7PKl0ufjK/ESpJ4Y4tyWJW'
-
-    // https://www.potterapi.com/v1/houses/?key=$2a$10$.oxIEWrEQmPZNXSvbcFrMO3dLi38tMO7PKl0ufjK/ESpJ4Y4tyWJW
-
-
-    // let testHouse = houseData[houseIndex]
-
-    // console.log('TESTTTTTTTT HOUSEEEEEEEEEEEEEEEE', testHouse.founder)
-
-    // console.log('the log 1', typeof (houseData))
-    // console.log('the log 1 is array', Array.isArray(houseData))
-    // console.log('the log 2', userHouse)
-    // console.log('the log 3', houseData[3])
-    // console.log('the log 4', houseData.length)
-
-
-    // const houseMembers = houseData
-    // const houseMembers = houseData.members
-
-    console.log("random member before the function", randomMembers)
-    console.log("arrray before the function", houseMembers)
-
-
-    // let houseMembers = houseData[houseIndex]
     let randomMembers
 
     // A function that picks randomly picks 2 elements from 
@@ -94,28 +56,8 @@ const Quiz = (props) => {
         randomMembers.push(temp.splice([randomIndex], 1)[0])
         return randomMembers
     }
-
-    // getRandomMember()
-    // console.log("getRandomMember", getRandomMember())
-
-
-    console.log("random member after the function", randomMembers)
-    console.log("random member after the function type of", typeof (randomMembers))
-    console.log("arrray after the function", houseMembers)
-
-    // getRandomMember()
-    // console.log("HELLO", randomMember)
-    console.log("HELLO", houseMembers)
-
-    // console.log("type", typeof (houseMembers))
-    console.log('HOUSE DATA', houseData)
-
-    console.log("heasiodaj", props.location.state)
-    console.log("user", userHouse)
-    console.log(process.env.API_Key)
-
-    // console.log("test", houseMembers)
     // console.log(config)
+
     return (
         <section className="section">
             <h1 className="title has-text-white has-text-centered">{userHouse} House Quiz</h1>
@@ -145,17 +87,16 @@ const Quiz = (props) => {
                             <div className="tile is-parent">
                                 <article className="tile is-child notification is-light">
                                     <div className="content">
-                                        <Questions randomMemberID={getRandomMembers()} score={score} questionNumber={questionNumber} houseMascot={houseMascot} headOfHouse={headOfHouse} houseValues={houseValues} />
-                                        <p className="">Name: <strong className="title">asdasdfasdfa</strong></p>
-                                        <div className="content">
-                                            <div className="tile is-parent">
-                                                <article className="tile is-child notification is-light">
-                                                    <figure className="image is-4by3">
-                                                        <img src="https://bulma.io/images/placeholders/640x480.png" />
-                                                    </figure>
-                                                </article>
-                                            </div>
-                                        </div>
+                                        <Questions
+                                            randomMemberID={getRandomMembers()}
+                                            score={score}
+                                            setScore={setScore}
+                                            questionNumber={questionNumber}
+                                            setQuestionNumber={setQuestionNumber}
+                                            houseMascot={houseMascot}
+                                            headOfHouse={headOfHouse}
+                                            houseValues={houseValues}
+                                        />
                                     </div>
                                 </article>
                             </div>

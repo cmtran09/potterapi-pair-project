@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Question1 from "./Question1"
-// import Question2 from "./Question2"
+import Question2 from "./Question2"
 import Question3 from "./Question3"
 import Question4 from "./Question4"
 import Question5 from "./Question5"
@@ -19,28 +19,11 @@ const Questions = (props) => {
     console.log("props.randomMemberID", props.randomMemberID)
     return (
         <div className="">
-            <button onClick={e => console.log("hello from question component", props.randomMemberID)}>click</button>
-            <p>Question component: helloe world</p>
-            {props.randomMemberID.map((member, elem) => {
-                return (
-                    <p key={elem}>{member}</p>
-                )
-            })}
-            <p>{props.houseMascot}</p>
-            <p>{props.headOfHouse}</p>
-            {props.houseValues.map((value, elem) => {
-                return (
-                    <p key={elem}>{value}</p>
-                )
-            })}
-            {/* <p>{props.randomMemberID}</p> */}
-            {/* {randomMemberID ? <p>{randomMemberID}</p> : ''} */}
-            {props.randomMemberID ? <Question1 randomMember1={props.randomMemberID[0]} /> : ""}
-            {/* <Question1 randomMember1={props.randomMemberID[0]} /> */}
-            {/* <Question2 /> */}
-            <Question3 houseMascot={props.houseMascot} />
-            <Question4 headOfHouse={props.headOfHouse} />
-            <Question5 houseValues={props.houseValues} />
+            {props.score === 0 && <Question1 setQuestionNumber={props.setQuestionNumber} setScore={props.setScore} randomMember1={props.randomMemberID[0]} />}
+            {props.score === 1 && <Question2 setQuestionNumber={props.setQuestionNumber} setScore={props.setScore} randomMember2={props.randomMemberID[1]} />}
+            {props.score === 2 && <Question3 setQuestionNumber={props.setQuestionNumber} setScore={props.setScore} houseMascot={props.houseMascot} />}
+            {props.score === 3 && <Question4 setQuestionNumber={props.setQuestionNumber} setScore={props.setScore} headOfHouse={props.headOfHouse} />}
+            {props.score === 4 && <Question5 setQuestionNumber={props.setQuestionNumber} setScore={props.setScore} houseValues={props.houseValues} />}
         </div>
     )
 }

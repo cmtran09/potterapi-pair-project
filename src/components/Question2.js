@@ -1,38 +1,38 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const Question1 = (props) => {
+const Question2 = (props) => {
 
-    const [characterIsOoP, setCharacterIsOoP] = useState(null)
+    const [characterIsDE, setCharacterIsDE] = useState(null)
     const [characterName, setCharacterName] = useState(null)
     const [id, setId] = useState(null)
     const [userAnswer, setUserAnswer] = useState(null)
     const [answered, setAnswered] = useState(null)
-    const [qOneCorrect, setQOneCorrect] = useState()
+    const [qTwoCorrect, setQTwoCorrect] = useState()
 
     useEffect(() => {
-        if (props.randomMember1) {
-            setId(props.randomMember1)
+        if (props.randomMember2) {
+            setId(props.randomMember2)
             axios.get(`https://www.potterapi.com/v1/characters/${id}?key=%242a%2410%24.oxIEWrEQmPZNXSvbcFrMO3dLi38tMO7PKl0ufjK%2FESpJ4Y4tyWJW`)
                 .then(res => {
                     // console.log("ID from props", id1)
-                    setCharacterIsOoP(res.data.orderOfThePhoenix)
+                    setCharacterIsDE(res.data.deathEater)
                     setCharacterName(res.data.name)
-                    props.setQuestionNumber(1)
+                    props.setQuestionNumber(2)
                     // console.log('chracrter', character)
                 })
                 .catch(err => console.log(err))
         }
     })
 
-    console.log(props.randomMember1)
+    console.log(props.randomMember2)
 
     function checkAnswer() {
-        if (characterIsOoP !== userAnswer) {
-            setQOneCorrect(true)
-            props.setScore(1)
+        if (characterIsDE !== userAnswer) {
+            setQTwoCorrect(true)
+            props.setScore(2)
             return
-        } else setQOneCorrect(false)
+        } else setQTwoCorrect(false)
     }
     // disabled={answered && true}
     return (
@@ -49,11 +49,11 @@ const Question1 = (props) => {
                     setAnswered(true)
                     checkAnswer()
                 }}>No</button>
-                {(qOneCorrect === true) && <p>correct</p>}
-                {(qOneCorrect === false) && <p>incorrect</p>}
+                {(qTwoCorrect === true) && <p>correct</p>}
+                {(qTwoCorrect === false) && <p>incorrect</p>}
             </div>
         </div>
     )
 }
 
-export default Question1
+export default Question2

@@ -9,14 +9,18 @@ const Question3 = (props) => {
     const [guesses, setGuesses] = useState(0)
     const [failed, setFailed] = useState(false)
 
+    useEffect(() => {
+        props.setQuestionNumber(3)
+    }, [])
+
     function check(e) {
         e.preventDefault()
         if (userAnswer.toLowerCase() === correctAnswer3) {
             setIsCorrect(true)
+            props.setScore(3)
         } else {
             setGuesses(guesses + 1)
             setIsCorrect(false)
-
         }
     }
 

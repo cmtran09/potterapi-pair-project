@@ -8,12 +8,16 @@ const Question5 = (props) => {
     const [guesses, setGuesses] = useState(0)
     const [failed, setFailed] = useState(false)
     const [valueNumber, setValueNumber] = useState(1)
-    const [oneIsCorrect, setoneIsCorrect] = useState(false)
-    const [twoIsCorrect, setTwoIsCorrect] = useState(false)
-    const [threeIsCorrect, setThreeIsCorrect] = useState(false)
-    const [fourIsCorrect, setFourIsCorrect] = useState(false)
+    // const [oneIsCorrect, setoneIsCorrect] = useState(false)
+    // const [twoIsCorrect, setTwoIsCorrect] = useState(false)
+    // const [threeIsCorrect, setThreeIsCorrect] = useState(false)
+    // const [fourIsCorrect, setFourIsCorrect] = useState(false)
 
     let correctValuesArr = props.houseValues
+
+    useEffect(() => {
+        props.setQuestionNumber(5)
+    }, [])
 
     function check(e, valueNumber) {
         e.preventDefault()
@@ -70,7 +74,7 @@ const Question5 = (props) => {
             {valueNumber >= 3 ? <input disabled={valueNumber >= 4 ? true : ""} className={"input " + inputClass()} type="text" placeholder="Your Answer" onChange={answer.bind(this)} onKeyPress={e => e.key === "Enter" && guesses < 3 ? check(e) : ""} /> : ""}
             {valueNumber >= 4 ? <input disabled={valueNumber >= 5 ? true : ""} className={"input " + inputClass()} type="text" placeholder="Your Answer" onChange={answer.bind(this)} onKeyPress={e => e.key === "Enter" && guesses < 3 ? check(e) : ""} /> : ""}
             {guesses < 3 && valueNumber !== 5 ? <button className="button is-black" onClick={(e) => { (check(e)) }}>Submit</button> : ""}
-            {valueNumber === 5 ? <p>WELL DONE, ALL QUESTIONS CORRECT</p> : ""}
+            {valueNumber === 5 ? <p>WELL DONE, ALL QUESTIONS CORRECT</p> && props.setScore(5) : ""}
             {(!isCorrect && guesses === 0 || valueNumber === 5) ? "" : (isCorrect) ? <small className="is-success">Correct!</small> : <small className="is-danger">Incorrect, you have {3 - guesses} guesses left</small>}
             {/* {isCorrect ? <small className="is-success">Correct!</small> : <small className="is-danger">Incorrect, you have {3 - guesses} guesses left</small>} */}
             {failed ? <Link to='/home'>
