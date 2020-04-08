@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import { Link } from 'react-router-dom'
+import React from 'react'
 import Question1 from "./Question1"
 import Question2 from "./Question2"
 import Question3 from "./Question3"

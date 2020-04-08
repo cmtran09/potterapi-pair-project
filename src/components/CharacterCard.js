@@ -17,8 +17,6 @@ const CharacterCard = (props) => {
         return word.charAt(0).toUpperCase() + word.slice(1);
     }
 
-    console.log("char", character)
-    console.log(props)
     return (
         <section className="section">
             <h1 className="title has-text-white has-text-centered">Your Character Card</h1>

@@ -39,9 +39,5 @@ const SpellCard = (props) => {
         </section>
     )
 }
-{/* <div class="task-container columns is-multiline">
-        <div class="card column is-half is-offset-one-quarter">
-            // statements
-        </div>
-    </div> */}
+
 export default SpellCard

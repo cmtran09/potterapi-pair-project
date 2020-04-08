@@ -8,10 +8,6 @@ const Question5 = (props) => {
     const [guesses, setGuesses] = useState(0)
     const [failed, setFailed] = useState(false)
     const [valueNumber, setValueNumber] = useState(1)
-    // const [oneIsCorrect, setoneIsCorrect] = useState(false)
-    // const [twoIsCorrect, setTwoIsCorrect] = useState(false)
-    // const [threeIsCorrect, setThreeIsCorrect] = useState(false)
-    // const [fourIsCorrect, setFourIsCorrect] = useState(false)
 
     let correctValuesArr = props.houseValues
 

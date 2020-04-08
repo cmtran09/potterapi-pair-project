@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 
 
-const HouseSort = (props) => {
+const HouseSort = () => {
 
     const [house, setHouse] = useState(undefined)
     const [clicks, setClicks] = useState(0)
@@ -65,7 +65,6 @@ const HouseSort = (props) => {
                     <div className={`innerBar innerBar${getHouseBorder()}2`}></div>
                 </div>
             </div>
-
             <div className="hero-body">
                 <div className="container">
                     <h1 className="title has-text-white">Home</h1>

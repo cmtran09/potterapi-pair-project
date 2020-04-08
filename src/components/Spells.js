@@ -5,8 +5,6 @@ import { Link } from "react-router-dom"
 const Spells = (props) => {
 
     const [spells, setSpells] = useState([])
-    const [query, setQuery] = useState('')
-    const [message, setMessage] = useState('')
     const [filter, setFilter] = useState('')
     const [filterType, setFilterType] = useState('All')
 
@@ -27,8 +25,6 @@ const Spells = (props) => {
 
     return (
         <section>
-            {/* <div className="hero is-fullheight"></div> */}
-            {/* THIS IS BACKGROUND IMAGE */}
             <div className="section background">
                 <h1 className="title has-text-white has-text-centered">Spells Page</h1>
                 <div className="container">

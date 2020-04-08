@@ -131,7 +131,6 @@ const Characters = () => {
                     <div className="columns is-mobile is-multiline">
                         {characters
                             .filter(elem => {
-                                console.log(characters.length)
                                 if (bloodFilter !== "All") {
                                     return elem.bloodStatus === bloodFilter
                                 } else return elem
