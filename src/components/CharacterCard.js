@@ -57,7 +57,7 @@ const CharacterCard = (props) => {
                                             <div className="tile is-parent">
                                                 <article className="tile is-child notification is-light">
                                                     <figure className="image is-4by3">
-                                                        <img src="https://bulma.io/images/placeholders/640x480.png" />
+                                                        <img src="\images\1024px-No_image_available.svg.png" />
                                                     </figure>
                                                 </article>
                                             </div>
