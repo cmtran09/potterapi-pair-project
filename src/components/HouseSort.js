@@ -65,9 +65,7 @@ const HouseSort = (props) => {
                     <div className={`innerBar innerBar${getHouseBorder()}2`}></div>
                 </div>
             </div>
-            <div className="">
-                {/* {getBanner()} */}
-            </div>
+
             <div className="hero-body">
                 <div className="container">
                     <h1 className="title has-text-white">Home</h1>
@@ -117,22 +115,21 @@ const HouseSort = (props) => {
                                 </div>
                             </Link>
                         </div>
-                        {
-                            house ? (
-                                <Link to={{
-                                    pathname: "/quiz",
-                                    state: { userHouse: house }
-                                }}>
-                                    <div className="column fade-in">
-                                        <div className="box has-text-centered">
-                                            <p>Your House Quiz</p>
-                                            <figure className="image container is-64x64">
-                                                <img src="../images/quiz.png" alt="Image" />
-                                            </figure>
-                                        </div>
+                        {house ? (
+                            <Link to={{
+                                pathname: "/quiz",
+                                state: { userHouse: house }
+                            }}>
+                                <div className="column fade-in">
+                                    <div className="box has-text-centered">
+                                        <p>Your House Quiz</p>
+                                        <figure className="image container is-64x64">
+                                            <img src="../images/quiz.png" alt="Image" />
+                                        </figure>
                                     </div>
-                                </Link>
-                            ) : ''
+                                </div>
+                            </Link>
+                        ) : ''
                         }
                     </div>
                 </div>

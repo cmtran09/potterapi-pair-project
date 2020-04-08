@@ -25,8 +25,6 @@ const Question2 = (props) => {
         }
     })
 
-    console.log(props.randomMember2)
-
     function checkAnswer() {
         if (characterIsDE !== userAnswer) {
             setQTwoCorrect(true)

@@ -25,8 +25,6 @@ const Question1 = (props) => {
         }
     })
 
-    console.log(props.randomMember1)
-
     function checkAnswer() {
         if (characterIsOoP !== userAnswer) {
             setQOneCorrect(true)

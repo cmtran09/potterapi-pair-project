@@ -9,14 +9,6 @@ import Question5 from "./Question5"
 
 const Questions = (props) => {
 
-    // useEffect(() => {
-    //     axios.get(`https://www.potterapi.com/v1/houses/?key=$2a$10$.oxIEWrEQmPZNXSvbcFrMO3dLi38tMO7PKl0ufjK/ESpJ4Y4tyWJW`)
-    //         .then(res => setHouseData(res.data))
-    //         .catch(err => console.log(err))
-    // }, [])
-
-
-    console.log("props.randomMemberID", props.randomMemberID)
     return (
         <div className="">
             {props.score === 0 && <Question1 setQuestionNumber={props.setQuestionNumber} setScore={props.setScore} randomMember1={props.randomMemberID[0]} />}

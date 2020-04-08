@@ -58,8 +58,38 @@ const Quiz = (props) => {
     }
     // console.log(config)
 
+    function getHouseBorder() {
+        if (typeof userHouse != 'undefined') {
+            if (userHouse === "Gryffindor") {
+                return 'Gryf'
+            }
+            if (userHouse === "Slytherin") {
+                return 'Slyt'
+            }
+            if (userHouse === "Hufflepuff") {
+                return 'Huff'
+            }
+            if (userHouse === "Ravenclaw") {
+                return 'Rave'
+            }
+            return ''
+        }
+    }
+
     return (
         <section className="section">
+            <div className="left">
+                <div className="bar">
+                    <div className={`innerBar innerBar${getHouseBorder()}`}></div>
+                    <div className={`innerBar innerBar${getHouseBorder()}2`}></div>
+                </div>
+            </div>
+            <div className="right">
+                <div className="bar barRight">
+                    <div className={`innerBar innerBar${getHouseBorder()}`}></div>
+                    <div className={`innerBar innerBar${getHouseBorder()}2`}></div>
+                </div>
+            </div>
             <h1 className="title has-text-white has-text-centered">{userHouse} House Quiz</h1>
             <div className="task-container columns is-multiline">
                 <div className="card column is-half is-offset-one-quarter">
