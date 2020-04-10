@@ -3,19 +3,16 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Link } from "react-router-dom"
 
-import axios from 'axios'
-// import Auth from './lib/auth'
-
 import 'bulma'
 import './styles/styles.scss'
 
-import Welcome from "./components/Welcome"
-import Quiz from "./components/Quiz"
-import HouseSort from "./components/HouseSort"
-import Spells from "./components/Spells"
-import SpellCard from "./components/SpellCard"
-import Characters from './components/Characters'
-import CharacterCard from './components/CharacterCard'
+import Welcome from "./components/Welcome/Welcome"
+import HouseSort from "./components/HouseSort/HouseSort"
+import Spells from "./components/Spells/Spells"
+import SpellCard from "./components/SpellCard/SpellCard"
+import Characters from './components/Characters/Characters'
+import CharacterCard from './components/CharacterCard/CharacterCard'
+import Quiz from "./components/Quiz/Quiz"
 
 const App = () => (
     <BrowserRouter>

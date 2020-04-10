@@ -22,5 +22,4 @@ const Welcome = () => {
     )
 }
 
-// box has-text-centered
 export default Welcome 

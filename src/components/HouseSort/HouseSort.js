@@ -68,7 +68,7 @@ const HouseSort = () => {
             <div className="hero-body">
                 <div className="container">
                     <h1 className="title has-text-white">Home</h1>
-                    <h2 className="subtitle has-text-white">
+                    <h2 data-testid="button-up" className="subtitle has-text-white">
                         Welcome, please navigate using the following
                     </h2>
                     <div className="columns">
@@ -106,8 +106,8 @@ const HouseSort = () => {
                         </div>
                         <div className="column">
                             <Link to="/spells">
-                                <div className="box has-text-centered">
-                                    <p>Spells</p>
+                                <div data-testid="spells" className="box has-text-centered">
+                                    <p data-testid="spellsT">Spells</p>
                                     <figure className="image container is-64x64">
                                         <img src="../images/magic.png" alt="Image" />
                                     </figure>
@@ -120,7 +120,7 @@ const HouseSort = () => {
                                 state: { userHouse: house }
                             }}>
                                 <div className="column fade-in">
-                                    <div className="box has-text-centered">
+                                    <div data-testid="quiz" className="box has-text-centered">
                                         <p>Your House Quiz</p>
                                         <figure className="image container is-64x64">
                                             <img src="../images/quiz.png" alt="Image" />

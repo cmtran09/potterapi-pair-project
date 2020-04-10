@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import Questions from "./Questions"
+import Questions from "../Questions/Questions"
 
 
 const Quiz = (props) => {

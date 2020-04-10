@@ -8,10 +8,17 @@ const Spells = (props) => {
     const [filter, setFilter] = useState('')
     const [filterType, setFilterType] = useState('All')
 
+    async function getSpells() {
+        let response = await axios.get('https://www.potterapi.com/v1/spells?key=%242a%2410%24.oxIEWrEQmPZNXSvbcFrMO3dLi38tMO7PKl0ufjK%2FESpJ4Y4tyWJW')
+        let spellsData = await response.data
+        setSpells(spellsData)
+        // console.log(spells)
+    }
+
     useEffect(() => {
-        axios.get('https://www.potterapi.com/v1/spells?key=%242a%2410%24.oxIEWrEQmPZNXSvbcFrMO3dLi38tMO7PKl0ufjK%2FESpJ4Y4tyWJW')
-            .then(res => setSpells(res.data))
+        getSpells()
     }, [])
+
 
     function filtering(e) {
         setFilter(e.target.value);
@@ -26,7 +33,7 @@ const Spells = (props) => {
     return (
         <section>
             <div className="section background">
-                <h1 className="title has-text-white has-text-centered">Spells Page</h1>
+                <h1 data-testid="heading" className="title has-text-white has-text-centered">Spells Page</h1>
                 <div className="container">
                     <div className="">
                         <form className="form">
