@@ -18,7 +18,7 @@ Next run:
 ```
 npm install
 ```
-Finally, to run on your localhost:
+Finally, to run on your brower via localhost:xxxx
 ```
 npm run serve
 ```
@@ -42,61 +42,21 @@ npm run serve
 ## Approach Taken
 As a pair, we found the PotterAPI after some research. The API provided us with an inbuilt sorting house route that we wanted to take advantage of and also provided interesting data that we found appealing.
 
-To read PotterAPI's Documentation can be found here: https://www.potterapi.com/
+The PotterAPI's Documentation can be found here: https://www.potterapi.com/
 
-After we selected the API we started creating a wireframe for our application and figureed out the essential features that will represent our MVP. The core features was to:
-* display all the characteras 
-* and spells obtained 
-* from the api and add filtering functionality for the user.
-* sort themselves to a house
-* dynamically change the appearance of the page depending on the house the user was assigned
+After we were happy with the API choice we figureed out the essential features that will represent our MVP by creating a wireframe. The core features that we set on were:
+* Sort user into a house using the API route
+* Dynamically change the appearance of the application depending on the house the user was assigned
+* Display all the characteras 
+* Display all spells
+* A filtering functionality for the user for the spells
+* A filtering functionality for the user for the characters
 
-an additional feature that was added was a quiz that asked the user questions depending on the hous ethey were assigned to.
+An additional feature that we thought would have been great to add was to reveal a Quiz to the user only after that have been sorted into a house and ask the user questions based on thier assigned house.
 
-```    const [spells, setSpells] = useState([])
-    const [filter, setFilter] = useState('')
-    const [filterType, setFilterType] = useState('All')
-```
+##Dynamic appearance
+Each time the user is sorted into a house we used react hooks to set the reuslt into a state. After this is done, two functions are run after. These functions check what the user ```house``` state is and returns the associated house flag and border colours. 
 
-```
-    async function getSpells() {
-        let response = await axios.get('https://www.potterapi.com/v1/spells?key=%242a%2410%24.oxIEWrEQmPZNXSvbcFrMO3dLi38tMO7PKl0ufjK%2FESpJ4Y4tyWJW')
-        let spellsData = await response.data
-        setSpells(spellsData)
-        // console.log(spells)
-    }
-```
-
-```
-      {spells
-                            .filter(elem => {
-                                if (filterType === "All") {
-                                    return elem
-                                } else return elem.type === filterType
-                            })
-                            .filter(elem => {
-                                return elem.spell.toLowerCase().includes(filter.toLowerCase())
-                            })
-                            .map((spell, i) => {
-                                return (
-                                    <div key={i} className="column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
-                                        <Link to={`/spells/${spell._id}`}>
-                                            <div className="btn card has-background-black">
-                                                <div className="card-content">
-                                                    <p className="has-text-white">{spell.spell}</p>
-                                                </div>
-                                            </div>
-                                        </Link>
-                                    </div>
-                                )
-                            })
-                        }
-```
-
-### House Sort
-The House Sorting Route the API returns a random selection of one of the 4 Hogwarts Houses. This response is 
-
-### Dynamically change the appearance of the page depending on the house the user was assigned
 ```
     function getBanner() {
         if (typeof house != 'undefined') {
@@ -116,6 +76,10 @@ The House Sorting Route the API returns a random selection of one of the 4 Hogwa
         }
     }
 
+```
+The getHouseBorder function returns a string that is assosicated to CSS classes with the associated house colours.
+
+```
     function getHouseBorder() {
         if (typeof house != 'undefined') {
             if (house === "Gryffindor") {
@@ -133,11 +97,82 @@ The House Sorting Route the API returns a random selection of one of the 4 Hogwa
             return ''
         }
     }
+    
+```
+## Featured Code
+### Filtering Functionality
+
+My approach to providing a dynamic filter to the project was to have two states: ```filter``` to hold the string of characters the user will input and ```filterType``` that will hold the value of the type of spell the user can choose from with the select field.
+
+``` 
+    const [spells, setSpells] = useState([])
+    const [filter, setFilter] = useState('')
+    const [filterType, setFilterType] = useState('All')
+```
+Before all the spells are mapped onto the application the array ```spells```  that contains all the spells retrieved from the ```axios``` get request two filter methods are preformed.
+
+the first ```.filter``` method filters the spells array to return only spells that have the same type as the ```filterType``` state.  However return all the spells if the ```filterType``` is ```"All"```
+
+next ```.filter``` method filters out spells that contain  any  instances of a string the user inputs into the text input field
+
+```
+      {spells
+        .filter(elem => {
+            if (filterType === "All") {
+                return elem
+            } else return elem.type === filterType
+        })
+        .filter(elem => {
+            return elem.spell.toLowerCase().includes(filter.toLowerCase())
+        })
+        .map((spell, i) => {
+            return (
+                <div key={i} className="column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
+                    <Link to={`/spells/${spell._id}`}>
+                        <div className="btn card has-background-black">
+                            <div className="card-content">
+                                <p className="has-text-white">{spell.spell}</p>
+                            </div>
+                        </div>
+                    </Link>
+                </div>
+            )
+        })
+    }
 ```
 
+### Quiz 
+Having the input field for the user to answer in for a question that had 4 correct answers came with a challenge. I wanted to provide the user with a single text input field. If a correct answer was entered correctly, that input filed will glow green, be disabled and anopther text input feild would appear untill all four correct answers have been entered.
 
-## Bugs
+to do this i used many inline If-Else with Conditional Operators to render things depending on the state of my application
+
+
+
+```
+...
+    {valueNumber >= 2 ? <input disabled={valueNumber >= 3 ? true : ""} className={"input " + inputClass()} type="text" placeholder="Your Answer" onChange={answer.bind(this)} onKeyPress={e => e.key === "Enter" && guesses < 3 ? check(e) : ""} /> : ""}
+    {valueNumber >= 3 ? <input disabled={valueNumber >= 4 ? true : ""} className={"input " + inputClass()} type="text" placeholder="Your Answer" onChange={answer.bind(this)} onKeyPress={e => e.key === "Enter" && guesses < 3 ? check(e) : ""} /> : ""}
+    ...
+```
+depending on the applications ```valueNumber``` another input text field will appear 
 
 ## Winners and Blockers
 
-## Future Content
+The biggest wins were:
+
+Leaning about how to make pages dynamic, using state and Conditional Rendering
+
+Working in a team, i really enjoyed pair programming as it allowed us both to learn and make sure we could understand what was going on  each step of the way
+
+Deciphering the APIs, to find data that was useful and usable
+Learning how to take data from an API and store it in an array with useState
+
+Moving data between components using props - we learnt how to pass props and how to pass data to child components and notably passing data back up to parent components using callbacks functions
+
+## Future
+
+add a reset filter function
+
+add timer for the quiz
+
+overall improve the application design
