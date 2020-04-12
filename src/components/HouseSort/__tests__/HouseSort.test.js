@@ -25,9 +25,9 @@ import HouseSort from '../HouseSort'
 //     // expect(quiz).toBeNull()
 // })
 
-afterEach(cleanup)
+// afterEach(cleanup)
 
-it("initial page load should display, no quiz, borders or house", () => {
-    const { getByTestId } = render(<HouseSort />);
-    expect(getByTestId('button-up')).toHaveTextContent("Welcome, please navigate using the following")
-})
+// it("initial page load should display, no quiz, borders or house", () => {
+//     const { getByTestId } = render(<HouseSort />);
+//     expect(getByTestId('button-up')).toHaveTextContent("Welcome, please navigate using the following")
+// })
