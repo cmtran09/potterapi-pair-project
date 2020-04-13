@@ -1,7 +1,7 @@
-import React from 'react'
-import Welcome from '../Welcome'
-import Enzyme, { shallow } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import React from "react"
+import Welcome from "../Welcome"
+import Enzyme, { shallow } from "enzyme"
+import Adapter from "enzyme-adapter-react-16"
 import toJSON from "enzyme-to-json"
 
 Enzyme.configure({ adapter: new Adapter() })

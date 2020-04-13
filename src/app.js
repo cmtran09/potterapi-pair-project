@@ -1,17 +1,17 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import React from "react"
+import ReactDOM from "react-dom"
+import { BrowserRouter, Switch, Route } from "react-router-dom"
 import { Link } from "react-router-dom"
 
-import 'bulma'
-import './styles/styles.scss'
+import "bulma"
+import "./styles/styles.scss"
 
 import Welcome from "./components/Welcome/Welcome"
 import HouseSort from "./components/HouseSort/HouseSort"
 import Spells from "./components/Spells/Spells"
 import SpellCard from "./components/SpellCard/SpellCard"
-import Characters from './components/Characters/Characters'
-import CharacterCard from './components/CharacterCard/CharacterCard'
+import Characters from "./components/Characters/Characters"
+import CharacterCard from "./components/CharacterCard/CharacterCard"
 import Quiz from "./components/Quiz/Quiz"
 
 const App = () => (
@@ -33,5 +33,5 @@ console.log(process.env.DB_HOST)
 
 ReactDOM.render(
     <App />,
-    document.getElementById('root')
+    document.getElementById("root")
 )

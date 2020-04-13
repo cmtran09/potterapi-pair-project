@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
 
 const Characters = () => {
 
     const [characters, setCharacters] = useState([])
-    const [filter, setFilter] = useState('')
+    const [filter, setFilter] = useState("")
     const [bloodFilter, setBloodFilter] = useState("All")
     const [houseFilter, setHouseFilter] = useState("All")
     const [deathEaterFilter, setDeathEaterFilter] = useState("All")
@@ -13,7 +13,7 @@ const Characters = () => {
     const [dumbFilter, setDumbFilter] = useState("All")
 
     useEffect(() => {
-        axios.get('https://www.potterapi.com/v1/characters/?key=%242a%2410%24.oxIEWrEQmPZNXSvbcFrMO3dLi38tMO7PKl0ufjK%2FESpJ4Y4tyWJW')
+        axios.get("https://www.potterapi.com/v1/characters/?key=%242a%2410%24.oxIEWrEQmPZNXSvbcFrMO3dLi38tMO7PKl0ufjK%2FESpJ4Y4tyWJW")
             .then(res => setCharacters(res.data))
             .catch(err => console.log(err))
     }, [])
@@ -71,10 +71,10 @@ const Characters = () => {
                             <input
                                 type="text"
                                 // value={query}
-                                id='search-input'
+                                id="search-input"
                                 className="input"
-                                placeholder='Search...'
-                                name='query'
+                                placeholder="Search..."
+                                name="query"
                                 onChange={filtering.bind(this)}
                             />
                         </div>

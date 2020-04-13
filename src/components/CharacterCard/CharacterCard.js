@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from "react"
+import axios from "axios"
+import { Link } from "react-router-dom"
 
 const CharacterCard = (props) => {
 
@@ -69,7 +69,7 @@ const CharacterCard = (props) => {
                     </div>
                 </div>
             </div>
-            <Link to='/spells'>
+            <Link to="/spells">
                 <p className=" has-text-white has-text-centered">
                     Back
             </p>
