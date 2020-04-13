@@ -18,16 +18,16 @@ const HouseSort = () => {
     function getBanner() {
         if (typeof house != "undefined") {
             if (house === "Gryffindor") {
-                return (<img className="fade-in" src="../images/Grif.png" alt="" />)
+                return (<img className="fade-in" src="https://raw.githubusercontent.com/cmtran09/project-2-potterapi-pair/master/src/images/Grif.png" alt="" />)
             }
             if (house === "Slytherin") {
-                return (<img className="fade-in" src="../images/Slyt.png" alt="" />)
+                return (<img className="fade-in" src="https://raw.githubusercontent.com/cmtran09/project-2-potterapi-pair/master/src/images/Slyt.png" alt="" />)
             }
             if (house === "Hufflepuff") {
-                return (<img className="fade-in" src="../images/Huff.png" alt="" />)
+                return (<img className="fade-in" src="https://raw.githubusercontent.com/cmtran09/project-2-potterapi-pair/master/src/images/Huff.png" alt="" />)
             }
             if (house === "Ravenclaw") {
-                return (<img className="fade-in" src="../images/Rave.png" alt="" />)
+                return (<img className="fade-in" src="https://raw.githubusercontent.com/cmtran09/project-2-potterapi-pair/master/src/images/Rave.png" alt="" />)
             }
         }
         return
@@ -99,7 +99,7 @@ const HouseSort = () => {
                                 <div className="box has-text-centered">
                                     <p>Characters</p>
                                     <figure className="image container is-64x64">
-                                        <img src="../images/network.png" alt="Image" />
+                                        <img src="https://raw.githubusercontent.com/cmtran09/project-2-potterapi-pair/master/src/images/network.png" alt="Image" />
                                     </figure>
                                 </div>
                             </Link>
@@ -109,7 +109,7 @@ const HouseSort = () => {
                                 <div data-testid="spells" className="box has-text-centered">
                                     <p data-testid="spellsT">Spells</p>
                                     <figure className="image container is-64x64">
-                                        <img src="../images/magic.png" alt="Image" />
+                                        <img src="https://raw.githubusercontent.com/cmtran09/project-2-potterapi-pair/master/src/images/magic.png" alt="Image" />
                                     </figure>
                                 </div>
                             </Link>
@@ -123,7 +123,7 @@ const HouseSort = () => {
                                     <div data-testid="quiz" className="box has-text-centered">
                                         <p>Your House Quiz</p>
                                         <figure className="image container is-64x64">
-                                            <img src="../images/quiz.png" alt="Image" />
+                                            <img src="https://raw.githubusercontent.com/cmtran09/project-2-potterapi-pair/master/src/images/quiz.png" alt="Image" />
                                         </figure>
                                     </div>
                                 </div>
