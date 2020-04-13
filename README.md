@@ -155,23 +155,14 @@ To do this I applied inline If-Else statements along with conditional operators.
 ```
 
 ## Winners and Blockers
-
 The biggest wins were:
-
 * Gaining lots of confidence in useing React since this was the first time using it creating an application from scratch.
-
 * Learning about how to make pages dynamic, using state and Conditional Rendering.
-
 * Working in a team, I enjoyed pair programming as it allowed us both to learn and make sure we could understand what was going on each step of the way.
-
 * Deciphering the APIs, to find data that was useful, usable and learning how to take data from an API and store it in an array with useState hook.
-
 * Moving data between components using props - we learnt how to pass props and how to pass data to child components and notably passing data back up to parent components using callbacks functions
 
 ## Future
-
 * Add a reset filter button function.
-
 * Add timer for the quiz
-
 * Overall improve the application's design.
