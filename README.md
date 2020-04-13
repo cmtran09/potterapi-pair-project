@@ -2,9 +2,9 @@
 # Project 2 - Potter Pair Project
 
 ## Overview
-A website designed to allow the user to explore and learn about the characters and spells inside the Novel series, Harry Potter.
+A website designed to allow the user to explore and learn about the characters and spells that appear in the novel series, Harry Potter.
 
-Additionally, users can sort themselves into a Hogwarts house and complete a quiz based on the house they were assigned.
+Users can also sort themselves into a Hogwarts house and complete a quiz based on the house they were assigned.
 
 You can launch the site on [GitHub Pages](https://cmtran09.github.io/project-1-vanillaJS-tetris/), or check out the [Repo](https://github.com/cmtran09/project-1-vanillaJS-tetris).
 
@@ -32,6 +32,7 @@ npm run serve
 ## Technologies Used
 * HTML
 * SCSS
+* Bulma
 * JavaScript ES6
 * React.js
 * Axios
@@ -40,22 +41,26 @@ npm run serve
 * Enzyme
 
 ## Approach Taken
-As a pair, we found the PotterAPI after some research. The API provided us with an inbuilt sorting house route that we wanted to take advantage of and also provided interesting data that we found appealing.
+As a pair after some research, we decided to choose PotterAPI for our project. The API provided us with an inbuilt sorting house route that we wanted to take advantage of and also provided interesting data that we found appealing.
 
 The PotterAPI's Documentation can be found here: https://www.potterapi.com/
 
-After we were happy with the API choice we figureed out the essential features that will represent our MVP by creating a wireframe. The core features that we set on were:
-* Sort user into a house using the API route
+The next step was to figure out the essential features that will represent our MVP to do this we create a wireframe of the application. The core MVP features that we agreed on were:
+* Sorting the user into a house using the API route
 * Dynamically change the appearance of the application depending on the house the user was assigned
-* Display all the characteras 
+* Display all the characters 
 * Display all spells
-* A filtering functionality for the user for the spells
-* A filtering functionality for the user for the characters
+* A filtering functionality for the spells
+* A filtering functionality for the characters
 
-An additional feature that we thought would have been great to add was to reveal a Quiz to the user only after that have been sorted into a house and ask the user questions based on thier assigned house.
+Being that we were only allowed 48 hours to complete the project, we both thought a great feature to add (if time permitted) was to use data from PotterAPI to generate random questions relevant to the house the user was sorted into.  This quiz would only reveal itself to the user only after they have sorted themselves to a house. 
 
-##Dynamic appearance
-Each time the user is sorted into a house we used react hooks to set the reuslt into a state. After this is done, two functions are run after. These functions check what the user ```house``` state is and returns the associated house flag and border colours. 
+## Dynamic appearance
+When the user sorts themself into a house their banner and their house colours appear. To do this, we used react hooks to set the result of the API's sorting route into a state. After this is done, I call two functions each check the ```house``` state and return with a border and banner to the correct house.
+
+![House Sort GIF](./src/images/potter%20gif%20640px%20standard.gif)
+
+This function is a simple if statement that checks the ```house state```. It is called after the user clicks "House Sort".  Initially ```house``` is undefined, and the ```getBanner()```  function returns nothing. When user sorts themself into a house the  ```house``` state changes and the application is rerendered soon after the ```getBanner()``` function returns an image in JSX.
 
 ```
     function getBanner() {
@@ -72,12 +77,12 @@ Each time the user is sorted into a house we used react hooks to set the reuslt 
             if (house === "Ravenclaw") {
                 return (<img className="fade-in" src="../images/Rave.png" alt="" />)
             }
-            return ("")
         }
+        return
     }
 
 ```
-The getHouseBorder function returns a string that is assosicated to CSS classes with the associated house colours.
+The ```getHouseBorder()``` function runs in very similar manner. It returns a string that is associated with a CSS ```className``` used to render the banner.
 
 ```
     function getHouseBorder() {
@@ -94,51 +99,51 @@ The getHouseBorder function returns a string that is assosicated to CSS classes 
             if (house === "Ravenclaw") {
                 return 'Rave'
             }
-            return ''
         }
+        return
     }
     
 ```
 ## Featured Code
 ### Filtering Functionality
-
-My approach to providing a dynamic filter to the project was to have two states: ```filter``` to hold the string of characters the user will input and ```filterType``` that will hold the value of the type of spell the user can choose from with the select field.
+Before all the spells are mapped onto the application two ```.filter``` methods are performed on the data. The user can filter by name, by typing a string into a text field or to filter by type of spell by choosing from a  select dropdown field.  Both of this information is stored in the state ```filter``` and ```filterType``` respectively.
 
 ``` 
     const [spells, setSpells] = useState([])
-    const [filter, setFilter] = useState('')
+    const [stringFilter, setStringFilter] = useState('')
     const [filterType, setFilterType] = useState('All')
 ```
-Before all the spells are mapped onto the application the array ```spells```  that contains all the spells retrieved from the ```axios``` get request two filter methods are preformed.
 
-the first ```.filter``` method filters the spells array to return only spells that have the same type as the ```filterType``` state.  However return all the spells if the ```filterType``` is ```"All"```
-
-next ```.filter``` method filters out spells that contain  any  instances of a string the user inputs into the text input field
+Provided that the ```filterType``` is ```"All"``` the spell type filter will essentially do nothing to the information and return all the data to the next filter. If the ```filterType``` is anything other than ```"All"``` spells will be filtered out to those who match the same spell type before passing the data to the next filter.
 
 ```
       {spells
+        // SPELL TYPE FILTER
         .filter(elem => {
             if (filterType === "All") {
                 return elem
             } else return elem.type === filterType
         })
+
+
+```
+
+This ```.filter``` method filters out spells that contain any instances of a string set in the ```filter``` state.
+
+```
+        // FILTER BY STRING
         .filter(elem => {
-            return elem.spell.toLowerCase().includes(filter.toLowerCase())
+            return elem.spell.toLowerCase().includes(stringFilter.toLowerCase())
         })
+```
+The result of the two filters is then mapped on the page with the following.
+```
+        // MAP RESULTING DATA TO PAGE
         .map((spell, i) => {
             return (
                 <div key={i} className="column is-one-quarter-desktop is-one-third-tablet is-half-mobile">
                     <Link to={`/spells/${spell._id}`}>
-                        <div className="btn card has-background-black">
-                            <div className="card-content">
-                                <p className="has-text-white">{spell.spell}</p>
-                            </div>
-                        </div>
-                    </Link>
-                </div>
-            )
-        })
-    }
+                        ...
 ```
 
 ### Quiz 
@@ -146,7 +151,7 @@ Having the input field for the user to answer in for a question that had 4 corre
 
 to do this i used many inline If-Else with Conditional Operators to render things depending on the state of my application
 
-
+For the last question in the quiz, the user is asked to list their 4 values associated with their house.  I wanted to provide the user with a single text input field that if the user passes in one of four correct answers, that input field will glow green and disable while revealing another text field for the user to input the next answer and so on until all four values have been recorded. 
 
 ```
 ...

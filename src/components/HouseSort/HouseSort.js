@@ -29,8 +29,8 @@ const HouseSort = () => {
             if (house === "Ravenclaw") {
                 return (<img className="fade-in" src="../images/Rave.png" alt="" />)
             }
-            return ("")
         }
+        return
     }
 
     function getHouseBorder() {
@@ -47,8 +47,8 @@ const HouseSort = () => {
             if (house === "Ravenclaw") {
                 return 'Rave'
             }
-            return ''
         }
+        return
     }
 
     return (

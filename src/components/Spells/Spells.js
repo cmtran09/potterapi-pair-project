@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 const Spells = (props) => {
 
     const [spells, setSpells] = useState([])
-    const [filter, setFilter] = useState('')
+    const [stringFilter, setStringFilter] = useState('')
     const [filterType, setFilterType] = useState('All')
 
     async function getSpells() {
@@ -21,7 +21,7 @@ const Spells = (props) => {
 
 
     function filtering(e) {
-        setFilter(e.target.value);
+        setStringFilter(e.target.value);
     }
 
     function typeFilter(e) {
@@ -70,7 +70,7 @@ const Spells = (props) => {
                                 } else return elem.type === filterType
                             })
                             .filter(elem => {
-                                return elem.spell.toLowerCase().includes(filter.toLowerCase())
+                                return elem.spell.toLowerCase().includes(stringFilter.toLowerCase())
                             })
                             .map((spell, i) => {
                                 return (
