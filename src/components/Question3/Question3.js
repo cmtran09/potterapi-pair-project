@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React, { useState, useEffect } from "react"
 
 const Question3 = (props) => {
 
@@ -47,12 +46,12 @@ const Question3 = (props) => {
     return (
         <div className="">
             <div className=""></div>
-            <p>What is your house's animal?</p>
+            <p>What is your house"s animal?</p>
             <input className={"input " + inputClass()} type="text" placeholder="Your Answer" onChange={answer.bind(this)} onKeyPress={e => e.key === "Enter" && guesses < 3 ? check(e) : ""} />
             {guesses < 3 && !isCorrect ? <button className="button is-black" onClick={(e) => { (check(e)) }}>Submit</button> : ""}
             {(!isCorrect && guesses === 0) ? "" : (isCorrect) ? <small className="is-success">Correct!</small> : <small className="is-danger">Incorrect, you have {3 - guesses} guesses left</small>}
             {/* {isCorrect ? <small className="is-success">Correct!</small> : <small className="is-danger">Incorrect, you have {3 - guesses} guesses left</small>} */}
-            {failed ? <Link to='/characters'>
+            {failed ? <Link to="/characters">
                 <p className="">
                     Go Back And Research
             </p>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
 const Question5 = (props) => {
@@ -73,7 +73,7 @@ const Question5 = (props) => {
             {valueNumber === 5 ? <p>WELL DONE, ALL QUESTIONS CORRECT</p> && props.setScore(5) : ""}
             {(!isCorrect && guesses === 0 || valueNumber === 5) ? "" : (isCorrect) ? <small className="is-success">Correct!</small> : <small className="is-danger">Incorrect, you have {3 - guesses} guesses left</small>}
             {/* {isCorrect ? <small className="is-success">Correct!</small> : <small className="is-danger">Incorrect, you have {3 - guesses} guesses left</small>} */}
-            {failed ? <Link to='/home'>
+            {failed ? <Link to="/home">
                 <p className="">
                     Go Back And Research
             </p>

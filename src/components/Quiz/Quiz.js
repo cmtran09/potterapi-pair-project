@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from "react"
+import axios from "axios"
+import { Link } from "react-router-dom"
 import Questions from "../Questions/Questions"
 
 
@@ -59,20 +59,20 @@ const Quiz = (props) => {
     // console.log(config)
 
     function getHouseBorder() {
-        if (typeof userHouse != 'undefined') {
+        if (typeof userHouse != "undefined") {
             if (userHouse === "Gryffindor") {
-                return 'Gryf'
+                return "Gryf"
             }
             if (userHouse === "Slytherin") {
-                return 'Slyt'
+                return "Slyt"
             }
             if (userHouse === "Hufflepuff") {
-                return 'Huff'
+                return "Huff"
             }
             if (userHouse === "Ravenclaw") {
-                return 'Rave'
+                return "Rave"
             }
-            return ''
+            return ""
         }
     }
 
@@ -134,7 +134,7 @@ const Quiz = (props) => {
                     </div>
                 </div>
             </div>
-            <Link to='/house'>
+            <Link to="/house">
                 <p className=" has-text-white has-text-centered">
                     Back
         </p>

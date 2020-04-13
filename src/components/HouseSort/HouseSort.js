@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import axios from 'axios'
-import { Link } from 'react-router-dom'
+import React, { useState } from "react"
+import axios from "axios"
+import { Link } from "react-router-dom"
 
 
 
@@ -10,13 +10,13 @@ const HouseSort = () => {
     const [clicks, setClicks] = useState(0)
 
     function getHouse() {
-        axios.get('https://www.potterapi.com/v1/sortingHat')
+        axios.get("https://www.potterapi.com/v1/sortingHat")
             .then(res => setHouse(res.data))
         console.log(house)
     }
 
     function getBanner() {
-        if (typeof house != 'undefined') {
+        if (typeof house != "undefined") {
             if (house === "Gryffindor") {
                 return (<img className="fade-in" src="../images/Grif.png" alt="" />)
             }
@@ -34,18 +34,18 @@ const HouseSort = () => {
     }
 
     function getHouseBorder() {
-        if (typeof house != 'undefined') {
+        if (typeof house != "undefined") {
             if (house === "Gryffindor") {
-                return 'Gryf'
+                return "Gryf"
             }
             if (house === "Slytherin") {
-                return 'Slyt'
+                return "Slyt"
             }
             if (house === "Hufflepuff") {
-                return 'Huff'
+                return "Huff"
             }
             if (house === "Ravenclaw") {
-                return 'Rave'
+                return "Rave"
             }
         }
         return
@@ -75,16 +75,16 @@ const HouseSort = () => {
                         <div className="column">
                             <div className="box has-text-centered">
                                 <p>Sorting Hat</p>
-                                {!house ? <p className="fade-in">Assign yourself to a house</p> : ''}
+                                {!house ? <p className="fade-in">Assign yourself to a house</p> : ""}
                                 {clicks < 2 ?
                                     <figure className="image container is-128x128" onClick={() => {
-                                        console.log('hi')
+                                        console.log("hi")
                                         console.log(clicks)
                                         setClicks(clicks + 1)
                                         getHouse()
                                     }}>
                                         {getBanner()}
-                                        {house ? <p className="fade-in">You are in house, {house}!</p> : ''}
+                                        {house ? <p className="fade-in">You are in house, {house}!</p> : ""}
                                     </figure>
                                     :
                                     <figure className="image container is-128x128">
@@ -128,7 +128,7 @@ const HouseSort = () => {
                                     </div>
                                 </div>
                             </Link>
-                        ) : ''
+                        ) : ""
                         }
                     </div>
                 </div>

@@ -1,12 +1,12 @@
-import React from 'react'
-import Enzyme, { shallow } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import React from "react"
+import Enzyme, { shallow } from "enzyme"
+import Adapter from "enzyme-adapter-react-16"
 import toJSON from "enzyme-to-json"
 
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup } from "@testing-library/react";
 
 
-import HouseSort from '../HouseSort'
+import HouseSort from "../HouseSort"
 
 
 // Enzyme.configure({ adapter: new Adapter() })
@@ -29,5 +29,5 @@ import HouseSort from '../HouseSort'
 
 // it("initial page load should display, no quiz, borders or house", () => {
 //     const { getByTestId } = render(<HouseSort />);
-//     expect(getByTestId('button-up')).toHaveTextContent("Welcome, please navigate using the following")
+//     expect(getByTestId("button-up")).toHaveTextContent("Welcome, please navigate using the following")
 // })

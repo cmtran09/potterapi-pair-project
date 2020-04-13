@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React, { useState, useEffect } from "react"
+import axios from "axios"
 
 const Question2 = (props) => {
 
@@ -19,7 +19,7 @@ const Question2 = (props) => {
                     setCharacterIsDE(res.data.deathEater)
                     setCharacterName(res.data.name)
                     props.setQuestionNumber(2)
-                    // console.log('chracrter', character)
+                    // console.log("chracrter", character)
                 })
                 .catch(err => console.log(err))
         }
