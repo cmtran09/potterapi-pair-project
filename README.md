@@ -1,4 +1,4 @@
-![General Assembly](images/ga&#32;logo.png)
+![General Assembly](src/images/ga&#32;logo.png)
 # Project 2 - Potter Pair Project
 
 ## Overview
