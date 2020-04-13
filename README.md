@@ -122,8 +122,6 @@ Provided that the ```filterType``` is ```"All"``` the spell type filter will ess
                 return elem
             } else return elem.type === filterType
         })
-
-
 ```
 
 This ```.filter``` method filters out spells that contain any instances of a string set in the ```filter``` state.
@@ -159,6 +157,8 @@ To do this I applied inline If-Else statements along with conditional operators.
 ## Winners and Blockers
 
 The biggest wins were:
+
+* Gaining lots of confidence in useing React since this was the first time using it creating an application from scratch.
 
 * Learning about how to make pages dynamic, using state and Conditional Rendering.
 
