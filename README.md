@@ -2,9 +2,7 @@
 # Project 2 - Potter Pair Project
 
 ## Overview
-A website designed to allow the user to explore and learn about the characters and spells that appear in the novel series, Harry Potter.
-
-Users can also sort themselves into a Hogwarts house and complete a quiz based on the house they were assigned.
+A website designed to allow the user to explore and learn about the characters and spells that appear in the novel series, Harry Potter. Users can also sort themselves into a Hogwarts house and complete a quiz based on the house that they were assigned.
 
 You can launch the site on [GitHub Pages](https://cmtran09.github.io/project-1-vanillaJS-tetris/), or check out the [Repo](https://github.com/cmtran09/project-1-vanillaJS-tetris).
 
@@ -147,11 +145,9 @@ The result of the two filters is then mapped on the page with the following.
 ```
 
 ### Quiz 
-Having the input field for the user to answer in for a question that had 4 correct answers came with a challenge. I wanted to provide the user with a single text input field. If a correct answer was entered correctly, that input filed will glow green, be disabled and anopther text input feild would appear untill all four correct answers have been entered.
+For the last question in the quiz, the user is asked to list the 4 values associated with their house.  I wanted to present the user with a single text input field for them to pass their first answer into. If the user passes in one of the answers, that input field will glow green and disable while revealing another text field for the next answer.  
 
-to do this i used many inline If-Else with Conditional Operators to render things depending on the state of my application
-
-For the last question in the quiz, the user is asked to list their 4 values associated with their house.  I wanted to provide the user with a single text input field that if the user passes in one of four correct answers, that input field will glow green and disable while revealing another text field for the user to input the next answer and so on until all four values have been recorded. 
+To do this I applied inline If-Else statements along with conditional operators. These were utilised render elements depending on the state of the application, notably the state, ```valueNumber```.
 
 ```
 ...
@@ -159,25 +155,23 @@ For the last question in the quiz, the user is asked to list their 4 values asso
     {valueNumber >= 3 ? <input disabled={valueNumber >= 4 ? true : ""} className={"input " + inputClass()} type="text" placeholder="Your Answer" onChange={answer.bind(this)} onKeyPress={e => e.key === "Enter" && guesses < 3 ? check(e) : ""} /> : ""}
     ...
 ```
-depending on the applications ```valueNumber``` another input text field will appear 
 
 ## Winners and Blockers
 
 The biggest wins were:
 
-Leaning about how to make pages dynamic, using state and Conditional Rendering
+* Learning about how to make pages dynamic, using state and Conditional Rendering.
 
-Working in a team, i really enjoyed pair programming as it allowed us both to learn and make sure we could understand what was going on  each step of the way
+* Working in a team, I enjoyed pair programming as it allowed us both to learn and make sure we could understand what was going on each step of the way.
 
-Deciphering the APIs, to find data that was useful and usable
-Learning how to take data from an API and store it in an array with useState
+* Deciphering the APIs, to find data that was useful, usable and learning how to take data from an API and store it in an array with useState hook.
 
-Moving data between components using props - we learnt how to pass props and how to pass data to child components and notably passing data back up to parent components using callbacks functions
+* Moving data between components using props - we learnt how to pass props and how to pass data to child components and notably passing data back up to parent components using callbacks functions
 
 ## Future
 
-add a reset filter function
+* Add a reset filter button function.
 
-add timer for the quiz
+* Add timer for the quiz
 
-overall improve the application design
+* Overall improve the application's design.
