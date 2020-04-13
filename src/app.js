@@ -15,7 +15,7 @@ import CharacterCard from "./components/CharacterCard/CharacterCard"
 import Quiz from "./components/Quiz/Quiz"
 
 const App = () => (
-    <BrowserRouter>
+    <BrowserRouter basename="project-2-potterapi-pair">
         {/* <NavBar /> */}
         <Switch>
             <Route exact path="/" component={Welcome} />
