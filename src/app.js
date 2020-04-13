@@ -1,7 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
-import { Link } from "react-router-dom"
 
 import "bulma"
 import "./styles/styles.scss"
@@ -15,7 +14,7 @@ import CharacterCard from "./components/CharacterCard/CharacterCard"
 import Quiz from "./components/Quiz/Quiz"
 
 const App = () => (
-    <BrowserRouter>
+    <BrowserRouter basename="/project-2-potterapi-pair/">
         {/* <NavBar /> */}
         <Switch>
             <Route exact path="/" component={Welcome} />
