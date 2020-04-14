@@ -42,6 +42,7 @@
     "babel-polyfill": "^6.26.0",
     "bulma": "^0.7.5",
     "dotenv-webpack": "^1.7.0",
+    "gh-pages": "^2.2.0",
     "jest-environment-enzyme": "^7.1.2",
     "jest-enzyme": "^7.1.2",
     "react": "^16.13.0",

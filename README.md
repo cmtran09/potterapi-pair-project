@@ -1,10 +1,10 @@
-![General Assembly](images/ga&#32;logo.png)
+![General Assembly](src/images/ga&#32;logo.png)
 # Project 2 - Potter Pair Project
 
 ## Overview
 A website designed to allow the user to explore and learn about the characters and spells that appear in the novel series, Harry Potter. Users can also sort themselves into a Hogwarts house and complete a quiz based on the house that they were assigned.
 
-You can launch the site on [GitHub Pages](https://cmtran09.github.io/project-1-vanillaJS-tetris/), or check out the [Repo](https://github.com/cmtran09/project-1-vanillaJS-tetris).
+You can launch the site on [GitHub Pages](https://cmtran09.github.io/project-2-potterapi-pair/), or check out the [Repo](https://github.com/cmtran09/project-2-potterapi-pair).
 
 If you will like to download this repository and run the clone locally, run the following in your terminal:
 
