@@ -69,7 +69,7 @@ const CharacterCard = (props) => {
                     </div>
                 </div>
             </div>
-            <Link to="/spells">
+            <Link to="/characters">
                 <p className=" has-text-white has-text-centered">
                     Back
             </p>
