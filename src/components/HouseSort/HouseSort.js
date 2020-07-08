@@ -6,6 +6,8 @@ import { Link } from "react-router-dom"
 
 const HouseSort = () => {
 
+    const rawLinkHead = "https://raw.githubusercontent.com/cmtran09/project-2-potterapi-pair/master/"
+
     const [house, setHouse] = useState(undefined)
     const [clicks, setClicks] = useState(0)
 
@@ -18,16 +20,16 @@ const HouseSort = () => {
     function getBanner() {
         if (typeof house != "undefined") {
             if (house === "Gryffindor") {
-                return (<img className="fade-in" src="../images/Grif.png" alt="" />)
+                return (<img className="fade-in" src={`${rawLinkHead}src/images/Grif.png`} alt="" />)
             }
             if (house === "Slytherin") {
-                return (<img className="fade-in" src="../images/Slyt.png" alt="" />)
+                return (<img className="fade-in" src={`${rawLinkHead}src/images/Slyt.png`} alt="" />)
             }
             if (house === "Hufflepuff") {
-                return (<img className="fade-in" src="../images/Huff.png" alt="" />)
+                return (<img className="fade-in" src={`${rawLinkHead}src/images/Huff.png`} alt="" />)
             }
             if (house === "Ravenclaw") {
-                return (<img className="fade-in" src="../images/Rave.png" alt="" />)
+                return (<img className="fade-in" src={`${rawLinkHead}src/images/Rave.png`} alt="" />)
             }
         }
         return
@@ -99,7 +101,7 @@ const HouseSort = () => {
                                 <div className="box has-text-centered">
                                     <p>Characters</p>
                                     <figure className="image container is-64x64">
-                                        <img src="../images/network.png" alt="Image" />
+                                        <img src={`${rawLinkHead}src/images/network.png`} alt="Image" />
                                     </figure>
                                 </div>
                             </Link>
@@ -109,7 +111,7 @@ const HouseSort = () => {
                                 <div data-testid="spells" className="box has-text-centered">
                                     <p data-testid="spellsT">Spells</p>
                                     <figure className="image container is-64x64">
-                                        <img src="../images/magic.png" alt="Image" />
+                                        <img src={`${rawLinkHead}src/images/magic.png`} alt="Image" />
                                     </figure>
                                 </div>
                             </Link>
@@ -123,7 +125,7 @@ const HouseSort = () => {
                                     <div data-testid="quiz" className="box has-text-centered">
                                         <p>Your House Quiz</p>
                                         <figure className="image container is-64x64">
-                                            <img src="../images/quiz.png" alt="Image" />
+                                            <img src={`${rawLinkHead}src/images/quiz.png`} alt="Image" />
                                         </figure>
                                     </div>
                                 </div>
